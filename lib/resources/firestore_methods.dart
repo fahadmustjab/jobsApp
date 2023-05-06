@@ -14,7 +14,7 @@ class FireStoreMethods {
     String postId = const Uuid().v1();
     try {
       _firestore
-          .collection('jobs')
+          .collection('users')
           .doc(user.uid)
           .collection('jobs')
           .doc(postId)
