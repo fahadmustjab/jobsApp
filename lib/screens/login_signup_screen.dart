@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jobs_app/screens/verify_email.dart';
 
 import '../controllers/login_controller.dart';
 import '../controllers/signup_controller.dart';
@@ -187,11 +188,6 @@ class LoginWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             socialAppsIcons(
-                text: 'assets/fb.png',
-                onPressed: () {
-                  loginController.signInWithFacebook(context);
-                }),
-            socialAppsIcons(
                 text: 'assets/google.png',
                 onPressed: () {
                   loginController.signInWithGoogle(context);
@@ -251,6 +247,12 @@ class SignUpWidget extends StatelessWidget {
                     text: 'Sign Up',
                     onpress: () {
                       signupController.signup(context);
+
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return const VerifyEmail();
+                        },
+                      ));
                     }),
               ))
       ],

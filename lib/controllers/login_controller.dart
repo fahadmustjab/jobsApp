@@ -5,7 +5,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../screens/MyHomePage.dart';
 import '../widgets/show_snackbar.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class LoginController extends GetxController {
   final emailController = TextEditingController().obs;
@@ -39,35 +38,35 @@ class LoginController extends GetxController {
     }
   }
 
-  Future<String> signInWithFacebook(context) async {
-    // Trigger the sign-in flow
-    String res = "Some Error occured";
+  // Future<String> signInWithFacebook(context) async {
+  //   // Trigger the sign-in flow
+  //   String res = "Some Error occured";
 
-    try {
-      final LoginResult loginResult = await FacebookAuth.instance.login();
+  //   try {
+  //     final LoginResult loginResult = await FacebookAuth.instance.login();
 
-      // Create a credential from the access token
-      final OAuthCredential facebookAuthCredential =
-          FacebookAuthProvider.credential(loginResult.accessToken!.token);
+  //     // Create a credential from the access token
+  //     final OAuthCredential facebookAuthCredential =
+  //         FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
-      // Once signed in, return the UserCredential
-      final credential =
-          FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-      if (credential != null) {
-        res = "success";
-        Navigator.pushReplacement(context, MaterialPageRoute(
-          builder: (context) {
-            return MyHomePage();
-          },
-        ));
-      }
-      showSnackBar(context, type: SnackBarType.success, message: "sucess");
-      return res;
-    } catch (e) {
-      showSnackBar(context, type: SnackBarType.error, message: e.toString());
-      return res;
-    }
-  }
+  //     // Once signed in, return the UserCredential
+  //     final credential =
+  //         FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  //     if (credential != null) {
+  //       res = "success";
+  //       Navigator.pushReplacement(context, MaterialPageRoute(
+  //         builder: (context) {
+  //           return MyHomePage();
+  //         },
+  //       ));
+  //     }
+  //     showSnackBar(context, type: SnackBarType.success, message: "sucess");
+  //     return res;
+  //   } catch (e) {
+  //     showSnackBar(context, type: SnackBarType.error, message: e.toString());
+  //     return res;
+  //   }
+  // }
 
   void toggleVisibility() {
     isvisible.value = !isvisible.value;
